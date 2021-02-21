@@ -31,7 +31,9 @@ export default function PaymentTemplate(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 2,
-        backgroundColor: '#fff',
+        backgroundColor: '#b1e2de',
+        paddingTop: 100,
+        paddingBottom: 5
     },
     titleText: {
         fontSize: 18,

@@ -4,6 +4,7 @@ import firebaseApp from './firebase.js';
 import firebase from 'firebase/app';
 import PaymentTemplate from './PaymentTemplate.js';
 import 'firebase/firestore';
+import { Divider } from 'react-native-elements';
 
 export default function HistoryPage(props) {
     const [history, setHistory] = useState({});        
@@ -35,7 +36,9 @@ export default function HistoryPage(props) {
 
     return (
         <View style = {styles.container}>
-            {content}
+            <Text style = {styles.header}> Your History </Text>
+            <Divider/>
+            {content}  
         </View>
     );
 }
@@ -43,8 +46,13 @@ export default function HistoryPage(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 2,
-        backgroundColor: '#fff',
         alignItems: 'center',
-        paddingTop: 50,
+        paddingTop: 40,
+        backgroundColor: '#fff'
+    },
+    header: {
+        fontSize: 45,
+        fontWeight: 'bold',
+        paddingBottom: 20
     }
 });
