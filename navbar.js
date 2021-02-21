@@ -6,15 +6,43 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
 import HistoryScreen from './HistoryScreen';
-
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+        
+
+        if (route.name === 'Home') {
+          iconName = focused
+          ? 'home'
+          : 'home-outline';
+        } else if (route.name === 'Profile') {
+          iconName = focused
+          ? 'person-circle'
+          : 'person-circle-outline';
+        } else if (route.name === 'History') {
+          iconName = focused
+          ? 'time'
+          : 'time-outline';
+        }
+
+        return <Ionicons name={iconName} size={size} color={color} />;
+      }
+    })}
+    tabBarOptions={{
+      activeTintColor: 'white',
+      inactiveTintColor: '#505050',
+      activeBackgroundColor: '#67c8a4',
+
+    }}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profle" component={ProfileScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="History" component={HistoryScreen} />
     </Tab.Navigator>
   );
