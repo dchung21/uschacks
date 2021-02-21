@@ -59,6 +59,11 @@ export default function App(props) {
 
 
     return (
+
+  
+    
+    
+
   <View style={styles.container}>
     <Text>Welcome back, {name}</Text>
     <Text> score: {score} </Text>
@@ -74,16 +79,17 @@ export default function App(props) {
     <Text> interest: {_interest} </Text>
     
     <StatusBar style="auto" />
-    <Button title="Profile" onPress={() => props.navigation.navigate("Profile")}/>
+    <Button title="Profile" onPress={() => props.navigation.navigate("Profile")}/> 
   </View>
 );
 }
 
 const styles = StyleSheet.create({
-container: {
-  flex: 1,
-  backgroundColor: '#fff',
-  alignItems: 'center',
-  justifyContent: 'center',
-},
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+  
 });

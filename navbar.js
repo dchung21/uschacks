@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
 import HistoryScreen from './HistoryScreen';
+import SearchScreen from './SearchScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -30,6 +31,10 @@ function MyTabs() {
           iconName = focused
           ? 'time'
           : 'time-outline';
+        } else if (route.name == 'Search') {
+          iconName = focused
+          ? 'search-outline'
+          : 'search-sharp'
         }
 
         return <Ionicons name={iconName} size={size} color={color} />;
@@ -38,12 +43,13 @@ function MyTabs() {
     tabBarOptions={{
       activeTintColor: '#75cfb8',
       inactiveTintColor: '#aaaaaa',
-      showLabel: false,
+      showLabel: 'false',
 
     }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="History" component={HistoryScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
     </Tab.Navigator>
   );
 }

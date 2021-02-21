@@ -5,6 +5,9 @@ import firebase from 'firebase/app';
 import CardComponent from './CardComponent.js';
 import 'firebase/firestore';
 
+
+
+
 export default function ProfilePage(props) {
     const [name, setName] = useState("");
     const [score, setScore] = useState(0);
@@ -57,7 +60,9 @@ const styles = StyleSheet.create({
          fontWeight: 'bold'
     },
     body: {
-        flex: 2
+        flex: 2,
+        backgroundColor: '#f5da94'
+        
     }
 });
 
