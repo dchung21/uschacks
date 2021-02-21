@@ -4,30 +4,45 @@ import { Ionicons } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-elements';
 
 
-class Search extends React.Component {
-    state = {
-        search: '',
-    };
+export default function App(props){
 
-    updateSearch = (search) => {
-        this.setState({ search});
-    };
+   const [user, setUser] = useState(""); 
 
-    render() {
-        const { search } = this.state;
+  const updateSearch = (search) => {
+      setState(search);
+      console.log(search);
+  };
 
-        return(
-            <SearchBar round
-            placeholder="Name or @username"
-            onChanceText={this.updateSearch}
-            value={search}
-            />      
 
-        )
+    return (
+        <View style = {styles.container}>
+        <View style = {styles.search}>
+      <SearchBar
+        round = {true}
+          lightTheme = {true}
+          showCancel
+        placeholder="Type Here..."
+        onChangeText={updateSearch}
+        value={user}
+          containerStyle={{
+            backgroundColor: '#fff',
+            justifyContent: 'space-around',
+            borderTopWidth:0,
+            borderBottomWidth:0,
+}}
+      />
+        </View>
+        </View>
+    );
+  }
+
+const styles = StyleSheet.create({
+    search: {
+        paddingTop: 25,
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
     }
-}
-
-export default Search;
-
-
+});
 

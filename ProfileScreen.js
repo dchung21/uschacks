@@ -6,8 +6,6 @@ import CardComponent from './CardComponent.js';
 import 'firebase/firestore';
 
 
-
-
 export default function ProfilePage(props) {
     const [name, setName] = useState("");
     const [score, setScore] = useState(0);

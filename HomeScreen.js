@@ -66,13 +66,7 @@ export default function App(props) {
     {content}
     
     <StatusBar style="auto" />
-<<<<<<< HEAD
-    <Button title="Profile" onPress={() => props.navigation.navigate("Profile")}/> 
   </View>
-=======
-    <Button title="Profile" onPress={() => props.navigation.navigate("Profile")}/>
-  </View> 
->>>>>>> 962cbf9a0174ea8104cea7f253501bc28af53dc7
 );
 }
 
