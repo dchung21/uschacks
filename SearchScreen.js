@@ -21,6 +21,7 @@ class Search extends React.Component {
             placeholder="Name or @username"
             onChanceText={this.updateSearch}
             value={search}
+            
             />      
 
         )

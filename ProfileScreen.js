@@ -57,12 +57,11 @@ const styles = StyleSheet.create({
     },
     name: {
          fontSize: 30,
-         fontWeight: 'bold'
+         fontWeight: 'bold',
+         fontFamily: "Proxima Nova"
     },
     body: {
-        flex: 2,
-        backgroundColor: '#f5da94'
-        
+        flex: 2
     }
 });
 
