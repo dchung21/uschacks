@@ -21,21 +21,30 @@ export default function HistoryPage(props) {
     }, [])
 
     const size = Object.keys(history).length;
-    let content;
+    let content = [];
     if (size > 0) {
-        console.log(history);
-        content = 
-            <ul>
-                {history.map(data => 
-                    <li>
-                        <PaymentTemplate type={data.type} />
-                    </li>)}
-            </ul>
+        for (let key in history) {
+            content.push(<PaymentTemplate 
+                        type={history[key]["Type"]}
+                        name={history[key]["Name"]}
+                        paid={history[key]["Paid"]}
+                        time={history[key]["Finished"]}
+                        />);
+        }
     }
 
     return (
-        <View>
-            <Text>History</Text>
+        <View style = {styles.container}>
+            {content}
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 2,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        paddingTop: 50,
+    }
+});
