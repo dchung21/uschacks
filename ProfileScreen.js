@@ -30,11 +30,11 @@ export default function ProfilePage(props) {
                 <Text>@DonaldChung</Text>
             </View>
 
-            <View style = {styles.body} >
                 <TouchableWithoutFeedback onPress = {() => props.navigation.navigate("History")}> 
-                <CardComponent title="Your Score" value={score}  />
+                    <View style = {styles.body} >
+                        <CardComponent title="Your Score" value={score}  />
+                    </View>
                 </TouchableWithoutFeedback>
-            </View>
         </View>
     );
 }
