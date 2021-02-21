@@ -58,9 +58,7 @@ const styles = StyleSheet.create({
          fontWeight: 'bold'
     },
     body: {
-        flex: 2,
-        backgroundColor: '#f5da94'
-        
+        flex: 2
     }
 });
 

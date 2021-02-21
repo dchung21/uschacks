@@ -49,7 +49,7 @@ export default function SearchScreen(props){
         round = {true}
           lightTheme = {true}
           showCancel
-        placeholder="Type Here..."
+        placeholder="Name or @username"
         onChangeText={updateSearch}
         value={text}
           containerStyle={{
@@ -70,7 +70,7 @@ export default function SearchScreen(props){
 
 const styles = StyleSheet.create({
     search: {
-        paddingTop: 25,
+        paddingTop: 50,
     },
     container: {
         flex: 1,
