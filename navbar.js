@@ -33,8 +33,8 @@ function MyTabs() {
           : 'time-outline';
         } else if (route.name == 'Search') {
           iconName = focused
-          ? 'search-outline'
-          : 'search-sharp'
+          ? 'search-sharp'
+          : 'search-outline'
         }
 
         return <Ionicons name={iconName} size={size} color={color} />;
