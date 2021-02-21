@@ -7,26 +7,14 @@ import firebaseApp from './firebase.js';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import ObligationInfo from './ObligationInfo.js';
+import RightsInfo from './RightsInfo.js';
 
 
 export default function App(props) {
-  const [name, setName] = useState("");
-  // const [currentbalance, setCurrentBalance] = usestate("");
-  const [score, setScore] = useState("");
 
-  // obligations
-  const [personOwed, setPersonOwed] = useState("");
-  const [owed, setOwed] = useState("");
-  const [dateOwed, setDateOwed] = useState("");
-  const [timeOwed, setTimeOwed] = useState("");
-  const [interest, setInterest] = useState("");
+  const [homeInfo, setHomeInfo] = useState({});
 
-  // rights
-  const [_personOwed, set_PersonOwed] = useState("");
-  const [_owed, set_Owed] = useState("");
-  const [_dateOwed, set_DateOwed] = useState("");
-  const [_timeOwed, set_TimeOwed] = useState("");
-  const [_interest, set_Interest] = useState("");
 
   const firestore = firebase.firestore(); 
   useEffect(() => {
@@ -34,48 +22,47 @@ export default function App(props) {
           const ref = firestore.collection("users").doc("DonaldChung");
           const doc = await ref.get();
           const data = doc.data();
-
-          setName(data.Name);
-          // setCurrentBalance(data./*Balance*/);
-          setScore(data.score); 
-
-          // obligations
-          setPersonOwed(Object.keys(data.obligations));
-          setOwed(data.obligations.BryantLiang[0]);
-          setDateOwed(data.obligations.BryantLiang[1].toDate().toDateString());
-          setTimeOwed(data.obligations.BryantLiang[1].toDate().toLocaleTimeString('UTC'));
-          setInterest(data.obligations.BryantLiang[2]);
-
-          // rights
-          set_PersonOwed(Object.keys(data.rights));
-          set_Owed(data.rights.JoeyLi[0]);
-          set_DateOwed(data.rights.JoeyLi[1].toDate().toDateString());
-          set_TimeOwed(data.rights.JoeyLi[1].toDate().toLocaleTimeString('UTC'));
-          set_Interest(data.rights.JoeyLi[2]);
+          setHomeInfo(data);
       }
 
       fetchUser();
-  });
+  }, [])
 
+  let content = [];
 
+  // obligations
+  for (let key in homeInfo.obligations) {
+      content.push(<ObligationInfo 
+                    PersonOwed={homeInfo.obligations[key][3]}
+                    owed={homeInfo.obligations[key][0]}
+                    dateOwed={homeInfo.obligations[key][1].toDate().toDateString()}
+                    timeOwed={homeInfo.obligations[key][1].toDate().toLocaleTimeString('UTC')}
+                    interest={homeInfo.obligations[key][2]}
+                    />)
+  }
+
+  // rights
+  for (let key in homeInfo.rights) {
+    content.push(<RightsInfo 
+                  _PersonOwed={homeInfo.rights[key][3]}
+                  _owed={homeInfo.rights[key][0]}
+                  _dateOwed={homeInfo.rights[key][1].toDate().toDateString()}
+                  _timeOwed={homeInfo.rights[key][1].toDate().toLocaleTimeString('UTC')}
+                  _interest={homeInfo.rights[key][2]}
+                  />)
+}
+
+    
+  
     return (
   <View style={styles.container}>
-    <Text>Welcome back, {name}</Text>
-    <Text> score: {score} </Text>
-    <Text> ------- </Text>
-    <Text> person owed: {personOwed} </Text>
-    <Text> dollars owed: {owed} </Text>
-    <Text> date owed: {dateOwed} {timeOwed} </Text>
-    <Text> interest: {interest} </Text>
-    <Text> ------- </Text>
-    <Text> person owed: {_personOwed} </Text>
-    <Text> dollars owed: {_owed} </Text>
-    <Text> date owed: {_dateOwed} {_timeOwed} </Text>
-    <Text> interest: {_interest} </Text>
+    <Text> Welcome back, {homeInfo.Name}</Text>
+    <Text> Score: {homeInfo.score} </Text>
+    {content}
     
     <StatusBar style="auto" />
     <Button title="Profile" onPress={() => props.navigation.navigate("Profile")}/>
-  </View>
+  </View> 
 );
 }
 
