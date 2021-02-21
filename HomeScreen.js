@@ -9,7 +9,7 @@ import 'firebase/firestore';
 
 
 
-export default function App() {
+export default function App(props) {
   const [name, setName] = useState("");
   // const [currentbalance, setCurrentBalance] = usestate("");
   const [score, setScore] = useState("");
