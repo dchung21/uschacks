@@ -55,8 +55,7 @@ const styles = StyleSheet.create({
     },
     name: {
          fontSize: 30,
-         fontWeight: 'bold',
-         fontFamily: "Proxima Nova"
+         fontWeight: 'bold'
     },
     body: {
         flex: 2
