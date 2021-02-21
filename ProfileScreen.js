@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableWithoutFeedback} from 'react-native';
 import firebaseApp from './firebase.js';
 import firebase from 'firebase/app';
+import CardComponent from './CardComponent.js';
 import 'firebase/firestore';
 
 export default function ProfilePage(props) {
@@ -22,8 +23,18 @@ export default function ProfilePage(props) {
     });
     return (
         <View style = {styles.container}>
-            <Text>{name}</Text>
-            <Text>Score: {score}</Text>
+            <View style = {styles.title}>
+                <Image source={{uri: `https://ui-avatars.com/api/?name=${name}&rounded=true&size=300`}}
+       style={{width: 128, height: 128}} />
+                <Text style = {styles.name} >{name}</Text>
+                <Text>@DonaldChung</Text>
+            </View>
+
+            <View style = {styles.body} >
+                <TouchableWithoutFeedback onPress = {() => props.navigation.navigate("History")}> 
+                <CardComponent title="Your Score" value={score}  />
+                </TouchableWithoutFeedback>
+            </View>
         </View>
     );
 }
@@ -35,6 +46,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+    title: {
+        flex: 1.5,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    name: {
+         fontSize: 30,
+         fontWeight: 'bold'
+    },
+    body: {
+        flex: 2
+    }
 });
 
 

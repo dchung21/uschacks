@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
+import HistoryScreen from './HistoryScreen';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -17,6 +18,10 @@ export default function App() {
                 <Stack.Screen
                     name="Profile"
                     component={ProfileScreen}
+                />
+                <Stack.Screen
+                    name="History"
+                    component={HistoryScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>
