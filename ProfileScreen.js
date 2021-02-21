@@ -51,7 +51,9 @@ const styles = StyleSheet.create({
         flex: 1.5,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingTop: 5,
+        paddingBottom: 10
     },
     name: {
          fontSize: 30,

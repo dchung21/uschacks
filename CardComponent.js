@@ -5,9 +5,9 @@ import { Text, View, Image, StyleSheet} from "react-native";
 
 export default function CardComponent(props) {
   return (
-      <Card containerStyle={{width: 300}} wrapperStyle={{}} onClick = {props.onClick}  >
+      <Card containerStyle={{width: 300, borderRadius: 20, backgroundColor: '#ffb4b4'}} wrapperStyle={{}} onClick = {props.onClick}  >
       <Card.Title style = {styles.titleText} >{props.title}</Card.Title>
-      <Card.Divider />
+      
       <View
         style={{
           position: "relative",
@@ -23,9 +23,14 @@ export default function CardComponent(props) {
 const styles = StyleSheet.create({
     titleText: {
         fontSize: 15,
+        fontWeight: 'light',
+        paddingTop: 2
         
     },
     contentText: {
-        fontSize: 45
+        fontSize: 70,
+        fontWeight: 'bold',
+        paddingTop: 0,
+        paddingBottom: 25
     },
 });
